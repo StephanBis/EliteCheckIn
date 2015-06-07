@@ -105,6 +105,35 @@ namespace Web
                 }
             }
 
+            public static async Task<List<Systems>> GetSystemsByFilter(string name)
+            {
+                using (var client = new HttpClient())
+                {
+                    List<Systems> systems = new List<Systems>();
+
+                    client.BaseAddress = new Uri("http://localhost:43649/");
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                    //voorzie strings en urls in configfile
+                    //voorzie methode voor post en get in utilityclass
+                    string url = "api/systems/filter/" + name;
+
+                    HttpResponseMessage response = await client.GetAsync(url).ConfigureAwait(false);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        systems = await response.Content.ReadAsAsync<List<Systems>>();
+
+                        return systems;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+
             public static async Task<Systems> GetSystemById(int systemId)
             {
                 using (var client = new HttpClient())

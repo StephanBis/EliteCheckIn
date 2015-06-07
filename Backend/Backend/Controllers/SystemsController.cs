@@ -22,16 +22,35 @@ namespace Backend.Controllers
             return _db.Systems;
         }
 
+        [Route("api/systems/{id}")]
         public Systems Get(int id)
         {
             return GetSystemById(id);
+        }
+
+        [Route("api/systems/filter/{name}")]
+        public List<Systems> Get(string name)
+        {
+            return GetSystemsByFilter(name);
         }
 
         private Systems GetSystemById(int id)
         { 
             try
             {
-                return _db.Systems.Where(c => c.SystemId == id).First();
+                return _db.Systems.Where(c => c.Id == id).First();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        private List<Systems> GetSystemsByFilter(string name)
+        {
+            try
+            {
+                return _db.Systems.Where(c => c.Name.Contains(name)).ToList();
             }
             catch (Exception ex)
             {

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -19,20 +21,20 @@ namespace Web
             }
             else
             {
+                errorPanel.Visible = false;
+
                 if (!IsPostBack)
                 {
-                    List<Systems> systems = await Database.GetSystems();
-
-                    systemsDropdownlist.DataTextField = "Name";
-                    systemsDropdownlist.DataValueField = "Id";
-                    systemsDropdownlist.DataSource = systems;
-                    systemsDropdownlist.DataBind();
-
                     Users user = (Users)Session["loggedIn"];
+                    Systems system = await Database.GetSystemById(user.SystemId);
 
                     if (!(user.SystemId == -1))
                     {
-                        systemsDropdownlist.SelectedValue = user.SystemId.ToString();
+                        systemTextbox.Text = system.Name;
+                    }
+                    else
+                    {
+                        systemTextbox.Text = "Unknown";
                     }
                 }
             }
@@ -41,18 +43,44 @@ namespace Web
         protected async void checkInButton_Click(object sender, EventArgs e)
         {
             Users user = (Users)Session["loggedIn"];
-            user.SystemId = Convert.ToInt32(systemsDropdownlist.SelectedValue);
+            List<Systems> systems = await Database.GetSystemsByFilter(systemTextbox.Text);
+            bool found = false;
 
-            HttpResponseMessage response = await Database.SaveUser(user);
-
-            if (!response.IsSuccessStatusCode)
+            if (systems.Count > 0)
             {
-                ShowError("Unable to check-in!");
+                foreach(Systems system in systems)
+                {
+                    if (system.Name == systemTextbox.Text)
+                    {
+                        user.SystemId = Convert.ToInt32(system.Id);
+
+                        HttpResponseMessage response = await Database.SaveUser(user);
+
+                        if (!response.IsSuccessStatusCode)
+                        {
+                            ShowError("Unable to check-in!", Color.Red);
+                        }
+
+                        found = true;
+                        ShowError("Your location has been updated!", Color.Green);
+                        break;
+                    }
+                }
+
+                if (found == false)
+                {
+                    ShowError("This system does not exist!", Color.Red);
+                }
+            }
+            else
+            {
+                ShowError("This system does not exist!", Color.Red);
             }
         }
 
-        private void ShowError(string errorMessage)
+        private void ShowError(string errorMessage, Color color)
         {
+            errorLabel.ForeColor = color;
             errorLabel.Text = errorMessage;
             errorPanel.Visible = true;
         }

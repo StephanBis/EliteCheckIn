@@ -13,7 +13,7 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            errorPanel.Visible = false;
         }
 
         protected async void registerButton_Click(object sender, EventArgs e)
