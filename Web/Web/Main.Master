@@ -1,0 +1,113 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="Web.Main" %>
+
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Elite: Dangerous Check-In</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="index">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header" class="alt">
+					<h1 id="logo"><a href="Home.aspx">Elite: Dangerous Check-In <span>by CptnDutch and SilverLlama</span></a></h1>
+					<nav id="nav">
+						<ul>
+							<%--<li class="submenu">
+								<a href="#">Layouts</a>
+								<ul>
+									<li><a href="left-sidebar.html">Left Sidebar</a></li>
+									<li><a href="right-sidebar.html">Right Sidebar</a></li>
+									<li><a href="no-sidebar.html">No Sidebar</a></li>
+									<li><a href="contact.html">Contact</a></li>
+									<li class="submenu">
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Dolore Sed</a></li>
+											<li><a href="#">Consequat</a></li>
+											<li><a href="#">Lorem Magna</a></li>
+											<li><a href="#">Sed Magna</a></li>
+											<li><a href="#">Ipsum Nisl</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>--%>
+                            <asp:Label ID="testLabel" runat="server" Text=""></asp:Label>
+                            <asp:Panel ID="loggedInPanel" runat="server" Visible="False">
+                                <li><a href="Home.aspx" class="current">Home</a></li>
+                                <li><a href="CheckIn.aspx" class="current">Check-in</a></li>
+                                <li><a href="Logout.aspx" class="current">Log out</a></li>
+                                <asp:HyperLink ID="userLink" runat="server"><asp:Label ID="usernameLabel" runat="server" Text=""></asp:Label></asp:HyperLink>
+                            </asp:Panel>
+
+                            <asp:Panel ID="loggedOutPanel" runat="server" Visible="False">
+                                <li><a href="Home.aspx" class="current">Home</a></li>
+                                <li><a href="Login.aspx" class="current">Log in</a></li>
+                                <li><a href="Register.aspx" class="button special">Register</a></li>
+                            </asp:Panel>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Banner -->
+				<section id="banner">
+
+					<!--
+						".inner" is set up as an inline-block so it automatically expands
+						in both directions to fit whatever's inside it. This means it won't
+						automatically wrap lines, so be sure to use line breaks where
+						appropriate (<br />).
+					-->
+					<div class="inner">
+
+						<header>
+							<h2>Elite: Dangerous Check-In</h2>
+						</header>
+						<p>This is a free check-in tool for <strong>Elite Dangerous</strong> <br />Let other commanders know where they can find you!</p>
+					</div>
+
+				</section>
+
+                <form runat="server" id="form1">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                        
+                    </asp:ContentPlaceHolder>
+                </form>
+
+			
+
+			<!-- Footer -->
+				<footer id="footer">
+
+					<%--<ul class="icons">
+						<li><a href="#" class="icon circle fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon circle fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon circle fa-google-plus"><span class="label">Google+</span></a></li>
+						<li><a href="#" class="icon circle fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon circle fa-dribbble"><span class="label">Dribbble</span></a></li>
+					</ul>--%>
+
+					<ul class="copyright">
+						<li>&copy; 2015 - Elite: Dangerous and all associated media are the intellectual property of <a href="http://www.frontier.co.uk/" target="_blank">Frontier Developments</a></li>
+					</ul>
+
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollgress.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
