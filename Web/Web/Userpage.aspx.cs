@@ -67,7 +67,7 @@ namespace Web
                 }
                 else
                 {
-                    Server.Transfer("Login.aspx");
+                    Server.Execute("Login.aspx");
                 }
             }
         }

@@ -81,6 +81,7 @@
   <ItemGroup>
     <Content Include="AutoComplete.asmx" />
     <Content Include="CheckIn.aspx" />
+    <Content Include="images\favicon.png" />
     <Content Include="Logout.aspx" />
     <Content Include="Main.Master" />
     <Content Include="assets\fonts\fontawesome-webfont.eot" />

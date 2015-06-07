@@ -12,7 +12,7 @@ namespace Web
         protected void Page_Load(object sender, EventArgs e)
         {
             Session.Clear();
-            Server.Transfer("Home.aspx");
+            Server.Execute("Home.aspx");
         }
     }
 }

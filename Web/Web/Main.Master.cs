@@ -13,18 +13,23 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["test"] = "Dit is een test";
+            Session["temp"] = "";
 
-            if (Session["loggedIn"] != null)
+            if (!IsPostBack)
             {
-                Users user = (Users)Session["loggedIn"];
-                usernameLabel.Text = "Welcome back, CMDR " + user.Username + "!";
-                userLink.NavigateUrl = "Userpage.aspx?Username=" + user.Username;
-                loggedInPanel.Visible = true;
-            }
-            else
-            {
-                loggedOutPanel.Visible = true;
+                if (Session["loggedIn"] != null)
+                {
+                    Users user = (Users)Session["loggedIn"];
+                    usernameLabel.Text = "Welcome back, CMDR " + user.Username + "!";
+                    userLink.NavigateUrl = "Userpage.aspx?Username=" + user.Username;
+                    loggedInPanel.Visible = true;
+                    loggedOutPanel.Visible = false;
+                }
+                else
+                {
+                    loggedOutPanel.Visible = true; 
+                    loggedInPanel.Visible = false;
+                }
             }
         }
     }

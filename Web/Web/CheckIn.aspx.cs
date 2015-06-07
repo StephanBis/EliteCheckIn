@@ -17,7 +17,7 @@ namespace Web
         {
             if (Session["loggedIn"] == null)
             {
-                Server.Transfer("Login.aspx");
+                Server.Execute("Login.aspx");
             }
             else
             {

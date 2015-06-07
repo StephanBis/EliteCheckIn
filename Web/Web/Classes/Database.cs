@@ -17,7 +17,7 @@ namespace Web
                 {
                     Users user = new Users();
 
-                    client.BaseAddress = new Uri("http://localhost:43649/");
+                    client.BaseAddress = new Uri("http://elitebackend-001-site1.myasp.net/");
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -44,7 +44,7 @@ namespace Web
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("http://localhost:43649/");
+                    client.BaseAddress = new Uri("http://elitebackend-001-site1.myasp.net/");
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -65,7 +65,7 @@ namespace Web
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("http://localhost:43649/");
+                    client.BaseAddress = new Uri("http://elitebackend-001-site1.myasp.net/");
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                     HttpResponseMessage response = await client.PutAsJsonAsync("api/users/put/", user);
@@ -82,7 +82,7 @@ namespace Web
                 {
                     List<Systems> systems = new List<Systems>();
 
-                    client.BaseAddress = new Uri("http://localhost:43649/");
+                    client.BaseAddress = new Uri("http://elitebackend-001-site1.myasp.net/");
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -111,7 +111,7 @@ namespace Web
                 {
                     List<Systems> systems = new List<Systems>();
 
-                    client.BaseAddress = new Uri("http://localhost:43649/");
+                    client.BaseAddress = new Uri("http://elitebackend-001-site1.myasp.net/");
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -140,7 +140,7 @@ namespace Web
                 {
                     Systems system = new Systems();
 
-                    client.BaseAddress = new Uri("http://localhost:43649/");
+                    client.BaseAddress = new Uri("http://elitebackend-001-site1.myasp.net/");
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
