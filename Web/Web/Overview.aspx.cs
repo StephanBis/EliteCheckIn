@@ -9,9 +9,20 @@ namespace Web
 {
     public partial class Overview : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected async void Page_Load(object sender, EventArgs e)
         {
+            Users currentUser = (Users)Session["loggedIn"];
+            List<Users> users = await Database.GetUsersCloseToSystem(currentUser.SystemId, 10);
 
+            foreach(Users user in users)
+            {
+                if (user.Username != currentUser.Username)
+                {
+                    Systems system = await Database.GetSystemById(user.SystemId);
+
+                    commandersListbox.Items.Add("CMDR " + user.Username + " -> " + system.Name);
+                }
+            }
         }
     }
 }

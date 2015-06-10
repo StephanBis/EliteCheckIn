@@ -11,5 +11,15 @@ namespace Desktop
         public int id { get; set; }
         public string name { get; set; }
         public string faction { get; set; }
+        public decimal x { get; set; }
+        public decimal y { get; set; }
+        public decimal z { get; set; }
+        public string population { get; set; }
+        public string government { get; set; }
+        public string allegiance { get; set; }
+        public string state { get; set; }
+        public string security { get; set; }
+        public string primary_economy { get; set; }
+        public string needs_permit { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace Web
         [WebMethod]
         public List<string> SearchSystems(string prefixText, int count)
         {
-            List<Systems> systems = Database.GetSystemsByFilter(prefixText).Result;
+            List<Systems> systems = Database.GetSystemsByFilter(prefixText.Replace(".","|")).Result;
             List<string> systemNames = new List<string>();
 
             foreach (Systems system in systems)

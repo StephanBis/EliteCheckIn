@@ -34,7 +34,27 @@ namespace Desktop
                 foreach (SystemsJson system in systems)
                 {
                     Systems newSystem = new Systems();
+                    newSystem.Id = system.id;
                     newSystem.Name = system.name;
+                    newSystem.Allegiance = system.allegiance;
+                    newSystem.Government = system.government;
+                    newSystem.Needs_permit = system.needs_permit;
+
+                    if (system.population == null)
+                    {
+                        newSystem.Population = "Unknown";
+                    }
+                    else
+                    {
+                        newSystem.Population = system.population;
+                    }
+                    
+                    newSystem.Primary_economy = system.primary_economy;
+                    newSystem.Security = system.security;
+                    newSystem.State = system.state;
+                    newSystem.X = system.x;
+                    newSystem.Y = system.y;
+                    newSystem.Z = system.z;
 
                     if (system.faction == null || system.faction == "")
                     {
@@ -56,7 +76,7 @@ namespace Desktop
                     {
                         index++;
 
-                        statusLabel.Text = newSystem.SystemId + " | " + newSystem.Name + " | " + newSystem.Faction + " | " + index;
+                        statusLabel.Text = newSystem.Id + " | " + newSystem.Name + " | " + newSystem.Faction + " | " + index;
                     }
                 }
 
@@ -101,7 +121,7 @@ namespace Desktop
                     {
                         index++;
 
-                        statusLabel.Text = newSystem.SystemId + " | " + newSystem.Name + " | " + newSystem.Faction + " | " + index; 
+                        statusLabel.Text = newSystem.Id + " | " + newSystem.Name + " | " + newSystem.Faction + " | " + index; 
                     }
                 }
 

@@ -43,7 +43,7 @@ namespace Web
         protected async void checkInButton_Click(object sender, EventArgs e)
         {
             Users user = (Users)Session["loggedIn"];
-            List<Systems> systems = await Database.GetSystemsByFilter(systemTextbox.Text);
+            List<Systems> systems = await Database.GetSystemsByFilter(systemTextbox.Text.Replace(".", "|"));
             bool found = false;
 
             if (systems.Count > 0)

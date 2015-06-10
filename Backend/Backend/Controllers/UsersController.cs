@@ -33,6 +33,12 @@ namespace Backend.Controllers
             return GetUserByUsername(username);
         }
 
+        [Route("api/users/close/{systemId}/{filter}")]
+        public List<Users> Get(int systemId, int filter)
+        {
+            return GetUsersCloseToSystem(systemId, filter);
+        }
+
         private Users GetUserById(int id)
         { 
             try
@@ -50,6 +56,32 @@ namespace Backend.Controllers
             try
             {
                 return _db.Users.Where(c => c.Username == username).First();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        private List<Users> GetUsersCloseToSystem(int systemId, int filter)
+        {
+            try
+            {
+                Systems system = _db.Systems.Where(c => c.Id == systemId).First();
+                List<Users> users = _db.Users.ToList();
+                List<Users> usersToSend = new List<Users>();
+
+                foreach(Users user in users)
+                {
+                    Systems systemClose = _db.Systems.Where(c => c.Id == user.SystemId).First();
+
+                    if (((systemClose.X >= system.X - filter) && (systemClose.X <= system.X + filter)) && ((systemClose.Y >= system.Y - filter) && (systemClose.Y <= system.Y + filter)) && ((systemClose.Z >= system.Z - filter) && (systemClose.Z <= system.Z + filter)))
+                    {
+                        usersToSend.Add(user);
+                    }
+                }
+
+                return usersToSend;
             }
             catch (Exception ex)
             {

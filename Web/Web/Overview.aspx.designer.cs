@@ -22,6 +22,15 @@ namespace Web {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
+        /// commandersListbox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox commandersListbox;
+        
+        /// <summary>
         /// systemTextbox control.
         /// </summary>
         /// <remarks>
@@ -47,15 +56,6 @@ namespace Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator systemVal;
-        
-        /// <summary>
-        /// checkInButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button checkInButton;
         
         /// <summary>
         /// errorPanel control.

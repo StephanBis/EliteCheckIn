@@ -11,6 +11,35 @@ namespace Web
     public class Database
     {
         #region Users
+            public static async Task<List<Users>> GetUsersCloseToSystem(int systemId, int filter)
+            {
+                using (var client = new HttpClient())
+                {
+                    List<Users> users = new List<Users>();
+
+                    client.BaseAddress = new Uri("http://elitebackend-001-site1.myasp.net/");
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                    //voorzie strings en urls in configfile
+                    //voorzie methode voor post en get in utilityclass
+                    string url = "api/users/close/" + systemId + "/" + filter;
+
+                    HttpResponseMessage response = await client.GetAsync(url).ConfigureAwait(false);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        users = await response.Content.ReadAsAsync<List<Users>>();
+
+                        return users;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+
             public static async Task<Users> GetUserByUsername(string username)
             {
                 using (var client = new HttpClient())

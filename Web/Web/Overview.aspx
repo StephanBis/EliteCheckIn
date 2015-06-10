@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="Overview.aspx.cs" Inherits="Web.Overview" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="Overview.aspx.cs" Inherits="Web.Overview"  Async="true" MaintainScrollPositionOnPostback="true" %>
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
      <article id="main">
@@ -12,20 +12,22 @@
 		</header>
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 		<section class="wrapper style1 container special">
-				<div class="12u 12u(narrower)">
+				<div class="12u 6u(narrower)">
 
 					<section>
                         <div>
                             <header>
 								<h3>
-                                    Search for commanders 
+                                    Commanders that are close to your location:
                                     <br />
+                                    <asp:ListBox ID="commandersListbox" runat="server"></asp:ListBox>
+                                    <br />
+                                    Search for commanders in another system:
                                     <asp:TextBox ID="systemTextbox" runat="server"></asp:TextBox>
                                     <cc1:AutoCompleteExtender ID="autoCompleteExtender" runat="server" Enabled="True" TargetControlID="systemTextbox" ServiceMethod="SearchSystems" MinimumPrefixLength="1" ServicePath="~/AutoComplete.asmx" CompletionInterval="200" CompletionSetCount="20" CompletionListItemCssClass="autocomplete_listItem " CompletionListCssClass="autocomplete_completionListElement " EnableCaching="False" CompletionListHighlightedItemCssClass="autocomplete_highlightedListItem">
                                     </cc1:AutoCompleteExtender>
                                     <asp:RequiredFieldValidator ID="systemVal" runat="server" ControlToValidate="systemTextbox" Display="Dynamic" ErrorMessage="System is required!" ForeColor="Red"></asp:RequiredFieldValidator>
                                     <br />
-                                    <asp:Button ID="checkInButton" runat="server" Text="Check-in" OnClick="checkInButton_Click" />
 
                                     <asp:Panel ID="errorPanel" runat="server" Visible="False">
                                         <asp:Label ID="errorLabel" runat="server" ForeColor="Red"></asp:Label>

@@ -31,11 +31,11 @@ namespace Backend.Controllers
         [Route("api/systems/filter/{name}")]
         public List<Systems> Get(string name)
         {
-            return GetSystemsByFilter(name);
+            return GetSystemsByFilter(name.Replace("|","."));
         }
 
         private Systems GetSystemById(int id)
-        { 
+        {
             try
             {
                 return _db.Systems.Where(c => c.Id == id).First();
@@ -79,9 +79,19 @@ namespace Backend.Controllers
             try
             {
                 Systems newSystem = value.ToObject<Systems>();
-                Systems oldSystem = GetSystemById(newSystem.SystemId);
+                Systems oldSystem = GetSystemById(newSystem.Id);
                 oldSystem.Name = newSystem.Name;
                 oldSystem.Faction = newSystem.Faction;
+                oldSystem.Allegiance = newSystem.Allegiance;
+                oldSystem.Government = newSystem.Government;
+                oldSystem.Needs_permit = newSystem.Needs_permit;
+                oldSystem.Population = newSystem.Population;
+                oldSystem.Primary_economy = newSystem.Primary_economy;
+                oldSystem.Security = newSystem.Security;
+                oldSystem.State = newSystem.State;
+                oldSystem.X = newSystem.X;
+                oldSystem.Y = newSystem.Y;
+                oldSystem.Z = newSystem.Z;
                 _db.SaveChanges();
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
