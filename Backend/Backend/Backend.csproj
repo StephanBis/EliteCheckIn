@@ -200,13 +200,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201506121204154_Initial.cs" />
-    <Compile Include="Migrations\201506121204154_Initial.Designer.cs">
-      <DependentUpon>201506121204154_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506121624499_Initial1.cs" />
-    <Compile Include="Migrations\201506121624499_Initial1.Designer.cs">
-      <DependentUpon>201506121624499_Initial1.cs</DependentUpon>
+    <Compile Include="Migrations\201506121822154_initial.cs" />
+    <Compile Include="Migrations\201506121822154_initial.Designer.cs">
+      <DependentUpon>201506121822154_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EliteCheckInDB.cs" />
@@ -284,11 +280,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506121204154_Initial.resx">
-      <DependentUpon>201506121204154_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506121624499_Initial1.resx">
-      <DependentUpon>201506121624499_Initial1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506121822154_initial.resx">
+      <DependentUpon>201506121822154_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -17,6 +17,11 @@
                         <div>
                             <header>
                                 <h3>
+
+
+                                    <asp:Image ID="rankImage" runat="server" />
+
+
                                     <asp:Panel ID="editPanel" runat="server" Visible="False">
                                         <strong>Username</strong>
                                         <br /> 
@@ -36,7 +41,7 @@
                                         <asp:RequiredFieldValidator ID="emailVal" runat="server" ControlToValidate="emailTextbox" Display="Dynamic" ErrorMessage="E-mail is required!" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
                                         &nbsp;<asp:TextBox ID="emailTextbox" runat="server" TextMode="Email"></asp:TextBox>
                                         <br />
-                                        <strong>Currently in</strong>
+                                        <strong>Last known location</strong>
                                         <br />
                                         <asp:HyperLink ID="systemLink" runat="server"><asp:Label ID="systemEditLabel" runat="server" Text=""></asp:Label></asp:HyperLink>
                                         <br />
@@ -53,7 +58,7 @@
                                         <br />
                                         <asp:Label ID="emailLabel" runat="server" Text=""></asp:Label>
                                         <br />
-                                        <strong>Currently in</strong>
+                                        <strong>Last known location</strong>
                                         <br />
                                         <asp:Label ID="systemLabel" runat="server" Text=""></asp:Label>
                                     </asp:Panel>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
@@ -16,53 +17,64 @@ namespace Web
             {
                 if (Session["loggedIn"] != null)
                 {
-                    Users user = (Users)Session["loggedIn"];
-                    string username = Request.QueryString["Username"];
-
-                    if (username == user.Username)
+                    try
                     {
-                        usernameEditLabel.Text = "CMDR " + user.Username;
-                        passwordTextbox.Text = user.Password;
-                        emailTextbox.Text = user.Email;
+                        Users user = (Users)Session["loggedIn"];
+                        string username = Request.QueryString["Username"];
 
-                        Systems system = await Database.GetSystemById(user.SystemId);
-                        if (!(user.SystemId == -1))
+                        if (username == user.Username)
                         {
-                            systemEditLabel.Text = system.Name;
-                        }
-                        else
-                        {
-                            systemEditLabel.Text = "Unknown";
-                        }
+                            usernameEditLabel.Text = "CMDR " + user.Username;
+                            passwordTextbox.Text = user.Password;
+                            emailTextbox.Text = user.Email;
+                            rankImage.ImageUrl = "~/assets/ranks/" + user.Rank() + ".jpg";
+                            rankImage.ToolTip = "Rank: " + user.Rank();
 
-                        systemLink.NavigateUrl = "CheckIn.aspx";
-                        editPanel.Visible = true;
-                    }
-                    else
-                    {
-                        Users queryUser = await Database.GetUserByUsername(Request.QueryString["Username"]);
-
-                        if (queryUser != null)
-                        {
-                            usernameLabel.Text = "CMDR " + queryUser.Username;
-                            emailLabel.Text = queryUser.Email;
-
-                            Systems system = await Database.GetSystemById(queryUser.SystemId);
-                            if (!(queryUser.SystemId == -1))
+                            Systems system = await Database.GetSystemById(user.SystemId);
+                            if (!(user.SystemId == -1))
                             {
-                                systemLabel.Text = system.Name;
+                                systemEditLabel.Text = system.Name;
                             }
                             else
                             {
-                                systemLabel.Text = "Unknown";
+                                systemEditLabel.Text = "Unknown";
                             }
 
-                            infoPanel.Visible = true;
+                            systemLink.NavigateUrl = "CheckIn.aspx";
+                            editPanel.Visible = true;
                         }
                         else
                         {
-                            ShowError("This user does not exist!");
+                            Users queryUser = await Database.GetUserByUsername(Request.QueryString["Username"]);
+
+                            if (queryUser != null)
+                            {
+                                usernameLabel.Text = "CMDR " + queryUser.Username;
+                                emailLabel.Text = queryUser.Email;
+                                rankImage.ImageUrl = "~/assets/ranks/" + queryUser.Rank() + ".jpg";
+                                rankImage.ToolTip = "Rank: " + user.Rank();
+
+                                Systems system = await Database.GetSystemById(queryUser.SystemId);
+                                if (!(queryUser.SystemId == -1))
+                                {
+                                    systemLabel.Text = system.Name;
+                                }
+                                else
+                                {
+                                    systemLabel.Text = "Unknown";
+                                }
+
+                                infoPanel.Visible = true;
+                            }
+                            else
+                            {
+                                ShowError("This user does not exist!", Color.Red);
+                            }
                         }
+                    }
+                    catch
+                    {
+                        ShowError("There was an error getting the data!", Color.Red);
                     }
                 }
                 else
@@ -74,22 +86,34 @@ namespace Web
 
         protected async void saveButton_Click(object sender, EventArgs e)
         {
-            Users user = new Users();
-
-            user.Username = usernameEditLabel.Text;
-            user.Password = passwordTextbox.Text;
-            user.Email = emailTextbox.Text;
-
-            HttpResponseMessage response = await Database.SaveUser(user);
-
-            if (!response.IsSuccessStatusCode)
+            try
             {
-                ShowError("Your details could not be saved!");
+                Users user = new Users();
+
+                user.Username = usernameEditLabel.Text;
+                user.Password = passwordTextbox.Text;
+                user.Email = emailTextbox.Text;
+
+                HttpResponseMessage response = await Database.SaveUser(user);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    ShowError("Your details could not be saved!", Color.Red);
+                }
+                else
+                {
+                    ShowError("Your details have been saved!", Color.Green);
+                }
             }
+            catch
+            {
+                ShowError("There was an error getting the data!", Color.Red);
+            }         
         }
 
-        private void ShowError(string errorMessage)
+        private void ShowError(string errorMessage, Color color)
         {
+            errorLabel.ForeColor = color;
             errorLabel.Text = errorMessage;
             errorPanel.Visible = true;
         }

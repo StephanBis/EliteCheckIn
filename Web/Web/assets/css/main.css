@@ -1746,6 +1746,11 @@
 
 /* Form */
 
+.centered {
+    margin: 0 auto;
+    width: 40% !important;
+}
+
 	input[type="text"],
 	input[type="password"],
 	input[type="email"],

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -17,19 +18,33 @@ namespace Web
             }
             else
             {
-                Users currentUser = (Users)Session["loggedIn"];
-                List<Users> users = await Database.GetUsersCloseToSystem(currentUser.SystemId, 10);
-
-                foreach(Users user in users)
+                try
                 {
-                    if (user.Username != currentUser.Username)
-                    {
-                        Systems system = await Database.GetSystemById(user.SystemId);
+                    Users currentUser = (Users)Session["loggedIn"];
+                    List<Users> users = await Database.GetUsersCloseToSystem(currentUser.SystemId, Convert.ToInt32(lightyearValueLabel.Text));
 
-                        commandersListbox.Items.Add("CMDR " + user.Username + " -> " + system.Name);
+                    foreach(Users user in users)
+                    {
+                        if (user.Username != currentUser.Username)
+                        {
+                            Systems system = await Database.GetSystemById(user.SystemId);
+
+                            commandersListbox.Items.Add("CMDR " + user.Username + " -> " + system.Name);
+                        }
                     }
                 }
+                catch
+                {
+                    ShowError("There was an error getting the data!", Color.Red);
+                }
             }            
+        }
+
+        private void ShowError(string errorMessage, Color color)
+        {
+            errorLabel.ForeColor = color;
+            errorLabel.Text = errorMessage;
+            errorPanel.Visible = true;
         }
     }
 }

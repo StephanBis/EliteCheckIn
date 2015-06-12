@@ -10,78 +10,87 @@
 namespace Web {
     
     
-    public partial class Overview {
+    public partial class Info {
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// Image1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.Image Image1;
         
         /// <summary>
-        /// lightyearLabel control.
+        /// Image9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lightyearLabel;
+        protected global::System.Web.UI.WebControls.Image Image9;
         
         /// <summary>
-        /// lightyearValueLabel control.
+        /// Image2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lightyearValueLabel;
+        protected global::System.Web.UI.WebControls.Image Image2;
         
         /// <summary>
-        /// lightyearSliderTextbox control.
+        /// Image3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox lightyearSliderTextbox;
+        protected global::System.Web.UI.WebControls.Image Image3;
         
         /// <summary>
-        /// lightyearSlider control.
+        /// Image4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.SliderExtender lightyearSlider;
+        protected global::System.Web.UI.WebControls.Image Image4;
         
         /// <summary>
-        /// commandersListbox control.
+        /// Image5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox commandersListbox;
+        protected global::System.Web.UI.WebControls.Image Image5;
         
         /// <summary>
-        /// errorPanel control.
+        /// Image6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel errorPanel;
+        protected global::System.Web.UI.WebControls.Image Image6;
         
         /// <summary>
-        /// errorLabel control.
+        /// Image7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label errorLabel;
+        protected global::System.Web.UI.WebControls.Image Image7;
+        
+        /// <summary>
+        /// Image8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Image8;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -18,27 +19,35 @@ namespace Web
 
         protected async void registerButton_Click(object sender, EventArgs e)
         {
-            Users user = new Users();
-            user.Username = usernameTextbox.Text;
-            user.Password = passwordTextbox.Text;
-            user.Email = emailTextbox.Text;
-
-            HttpResponseMessage response = await Database.AddUser(user);
-
-            if (!response.IsSuccessStatusCode)
+            try
             {
-                ShowError("This username already exists!");
+                Users user = new Users();
+                user.Username = usernameTextbox.Text;
+                user.Password = passwordTextbox.Text;
+                user.Email = emailTextbox.Text;
+
+                HttpResponseMessage response = await Database.AddUser(user);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    ShowError("This username already exists!", Color.Red);
+                }
+                else
+                {
+                    Session["loggedIn"] = user.Username;
+
+                    Server.Transfer("Home.aspx");
+                }
             }
-            else
+            catch
             {
-                Session["loggedIn"] = user.Username;
-
-                Server.Transfer("Home.aspx");
+                ShowError("There was an error getting the data!", Color.Red);
             }
         }
 
-        private void ShowError(string errorMessage)
+        private void ShowError(string errorMessage, Color color)
         {
+            errorLabel.ForeColor = color;
             errorLabel.Text = errorMessage;
             errorPanel.Visible = true;
         }

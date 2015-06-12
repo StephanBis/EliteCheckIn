@@ -20,19 +20,12 @@
 								<h3>
                                     Commanders that are close to your location:
                                     <br />
-                                    <asp:Label ID="lightyearLabel" runat="server" Text="LY filter:"></asp:Label>
-                                    <asp:TextBox ID="lightyearSliderTextbox" runat="server"></asp:TextBox>
-                                    <cc1:SliderExtender ID="lightyearSlider" runat="server" TargetControlID="lightyearSliderTextbox" Minimum="1" TooltipText="Drag to change lightyear value" BoundControlID="lightyearValueTextbox" RaiseChangeOnlyOnMouseUp="False" RailCssClass="test" />
-                                    <asp:TextBox ID="lightyearValueTextbox" runat="server">10</asp:TextBox>
+                                    <asp:Label ID="lightyearLabel" runat="server" Text="LY radius:"></asp:Label>
+                                    &nbsp;<asp:Label ID="lightyearValueLabel" runat="server" Text="10"></asp:Label>
+                                    <asp:TextBox ID="lightyearSliderTextbox" runat="server" AutoPostBack="True"></asp:TextBox>
+                                    <cc1:SliderExtender ID="lightyearSlider" runat="server" TargetControlID="lightyearSliderTextbox" Minimum="1" TooltipText="Drag to change lightyear value" BoundControlID="lightyearValueLabel" RaiseChangeOnlyOnMouseUp="False" RailCssClass="ajax__slider_h_rail centered" />
                                     <br />
                                     <asp:ListBox ID="commandersListbox" runat="server"></asp:ListBox>
-                                    <br />
-                                    Search for commanders in another system:
-                                    <asp:TextBox ID="systemTextbox" runat="server"></asp:TextBox>
-                                    <cc1:AutoCompleteExtender ID="autoCompleteExtender" runat="server" Enabled="True" TargetControlID="systemTextbox" ServiceMethod="SearchSystems" MinimumPrefixLength="1" ServicePath="~/AutoComplete.asmx" CompletionInterval="200" CompletionSetCount="20" CompletionListItemCssClass="autocomplete_listItem " CompletionListCssClass="autocomplete_completionListElement " EnableCaching="False" CompletionListHighlightedItemCssClass="autocomplete_highlightedListItem">
-                                    </cc1:AutoCompleteExtender>
-                                    <asp:RequiredFieldValidator ID="systemVal" runat="server" ControlToValidate="systemTextbox" Display="Dynamic" ErrorMessage="System is required!" ForeColor="Red"></asp:RequiredFieldValidator>
-                                    <br />
 
                                     <asp:Panel ID="errorPanel" runat="server" Visible="False">
                                         <asp:Label ID="errorLabel" runat="server" ForeColor="Red"></asp:Label>

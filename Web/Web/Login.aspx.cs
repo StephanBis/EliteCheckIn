@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -17,31 +18,39 @@ namespace Web
 
         protected async void loginButton_Click(object sender, EventArgs e)
         {
-            Users user = await Database.GetUserByUsername(usernameTextbox.Text);
-
-            if (user != null)
+            try
             {
-                if (user.Password == passwordTextbox.Text)
-                {
-                    Session["loggedIn"] = user;
+                Users user = await Database.GetUserByUsername(usernameTextbox.Text);
 
-                    Server.Transfer("Home.aspx");
+                if (user != null)
+                {
+                    if (user.Password == passwordTextbox.Text)
+                    {
+                        Session["loggedIn"] = user;
+
+                        Server.Transfer("Home.aspx");
+                    }
+                    else
+                    {
+                        ShowError("This combination does not exist!", Color.Red);
+                    }
                 }
                 else
                 {
-                    ShowError("This combination does not exist!");
+                    ShowError("This combination does not exist!", Color.Red);
                 }
             }
-            else
+            catch
             {
-                ShowError("This combination does not exist!");
+                ShowError("There was an error getting the data!", Color.Red);
             }
         }
 
-        private void ShowError(string errorMessage)
+        private void ShowError(string errorMessage, Color color)
         {
+            errorLabel.ForeColor = color;
             errorLabel.Text = errorMessage;
-            errorPanel.Visible = true;  
+            errorPanel.Visible = true;
         }
     }
 }

@@ -25,16 +25,23 @@ namespace Web
 
                 if (!IsPostBack)
                 {
-                    Users user = (Users)Session["loggedIn"];
-                    Systems system = await Database.GetSystemById(user.SystemId);
+                    try
+                    {
+                        Users user = (Users)Session["loggedIn"];
+                        Systems system = await Database.GetSystemById(user.SystemId);
 
-                    if (!(user.SystemId == -1))
-                    {
-                        systemTextbox.Text = system.Name;
+                        if (!(user.SystemId == -1))
+                        {
+                            systemTextbox.Text = system.Name;
+                        }
+                        else
+                        {
+                            systemTextbox.Text = "Unknown";
+                        }
                     }
-                    else
+                    catch
                     {
-                        systemTextbox.Text = "Unknown";
+                        ShowError("There was an error getting the data!", Color.Red);
                     }
                 }
             }
@@ -42,39 +49,46 @@ namespace Web
 
         protected async void checkInButton_Click(object sender, EventArgs e)
         {
-            Users user = (Users)Session["loggedIn"];
-            List<Systems> systems = await Database.GetSystemsByFilter(systemTextbox.Text.Replace(".", "|"));
-            bool found = false;
-
-            if (systems.Count > 0)
+            try
             {
-                foreach(Systems system in systems)
+                Users user = (Users)Session["loggedIn"];
+                List<Systems> systems = await Database.GetSystemsByFilter(systemTextbox.Text.Replace(".", "|"));
+                bool found = false;
+
+                if (systems.Count > 0)
                 {
-                    if (system.Name == systemTextbox.Text)
+                    foreach(Systems system in systems)
                     {
-                        user.SystemId = Convert.ToInt32(system.Id);
-
-                        HttpResponseMessage response = await Database.SaveUser(user);
-
-                        if (!response.IsSuccessStatusCode)
+                        if (system.Name == systemTextbox.Text)
                         {
-                            ShowError("Unable to check-in!", Color.Red);
-                        }
+                            user.SystemId = Convert.ToInt32(system.Id);
 
-                        found = true;
-                        ShowError("Your location has been updated!", Color.Green);
-                        break;
+                            HttpResponseMessage response = await Database.SaveUser(user);
+
+                            if (!response.IsSuccessStatusCode)
+                            {
+                                ShowError("Unable to check-in!", Color.Red);
+                            }
+
+                            found = true;
+                            ShowError("Your location has been updated!", Color.Green);
+                            break;
+                        }
+                    }
+
+                    if (found == false)
+                    {
+                        ShowError("This system does not exist!", Color.Red);
                     }
                 }
-
-                if (found == false)
+                else
                 {
                     ShowError("This system does not exist!", Color.Red);
                 }
             }
-            else
+            catch
             {
-                ShowError("This system does not exist!", Color.Red);
+                ShowError("There was an error getting the data!", Color.Red);
             }
         }
 

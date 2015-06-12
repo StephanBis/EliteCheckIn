@@ -82,8 +82,7 @@ namespace Web
                         HttpResponseMessage response = await client.PostAsJsonAsync("api/users/", user);
                         return response;
                     }
-
-                    catch (Exception ex)
+                    catch
                     {
                         return null;
                     }

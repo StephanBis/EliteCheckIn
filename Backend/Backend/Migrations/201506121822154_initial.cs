@@ -3,16 +3,16 @@ namespace Backend.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial1 : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.Users", "Image", c => c.String());
+            DropColumn("dbo.Users", "Image");
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Users", "Image");
+            AddColumn("dbo.Users", "Image", c => c.String());
         }
     }
 }
