@@ -31,7 +31,7 @@ namespace Backend.Controllers
         [Route("api/systems/filter/{name}")]
         public List<Systems> Get(string name)
         {
-            return GetSystemsByFilter(name.Replace("|","."));
+            return GetSystemsByFilter(name.Replace("|", "."));
         }
 
         private Systems GetSystemById(int id)

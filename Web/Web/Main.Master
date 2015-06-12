@@ -41,6 +41,7 @@
                             <asp:Panel ID="loggedInPanel" runat="server" Visible="False">
                                 <li><a href="Home.aspx" class="current">Home</a></li>
                                 <li><a href="CheckIn.aspx" class="current">Check-in</a></li>
+                                <li><a href="Overview.aspx" class="current">Overview</a></li>
                                 <li><a href="Logout.aspx" class="current">Log out</a></li>
                                 <asp:HyperLink ID="userLink" runat="server"><asp:Label ID="usernameLabel" runat="server" Text=""></asp:Label></asp:HyperLink>
                             </asp:Panel>

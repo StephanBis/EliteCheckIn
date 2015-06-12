@@ -5,9 +5,9 @@
 
 		<header class="special container">
 			<span class="icon fa fa-clock-o"></span>
-			<h2><strong>Check-in</strong></h2>
+			<h2><strong>Overview</strong></h2>
             <p>
-                Check-in to let others know where you are!
+                Check where other commanders are hanging out!
             </p>
 		</header>
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -19,6 +19,11 @@
                             <header>
 								<h3>
                                     Commanders that are close to your location:
+                                    <br />
+                                    <asp:Label ID="lightyearLabel" runat="server" Text="LY filter:"></asp:Label>
+                                    <asp:TextBox ID="lightyearSliderTextbox" runat="server"></asp:TextBox>
+                                    <cc1:SliderExtender ID="lightyearSlider" runat="server" TargetControlID="lightyearSliderTextbox" Minimum="1" TooltipText="Drag to change lightyear value" BoundControlID="lightyearValueTextbox" RaiseChangeOnlyOnMouseUp="False" RailCssClass="test" />
+                                    <asp:TextBox ID="lightyearValueTextbox" runat="server">10</asp:TextBox>
                                     <br />
                                     <asp:ListBox ID="commandersListbox" runat="server"></asp:ListBox>
                                     <br />

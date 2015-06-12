@@ -13,7 +13,7 @@ namespace Desktop
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://elitebackend-001-site1.myasp.net/");
+                client.BaseAddress = new Uri("http://localhost:43649/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 

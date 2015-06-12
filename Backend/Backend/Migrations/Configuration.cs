@@ -9,8 +9,7 @@ namespace Backend.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            ContextKey = "Backend.EliteCheckInDB";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(Backend.EliteCheckInDB context)

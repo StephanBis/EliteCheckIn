@@ -40,7 +40,7 @@ namespace Backend.Controllers
         }
 
         private Users GetUserById(int id)
-        { 
+        {
             try
             {
                 return _db.Users.Where(c => c.UserId == id).First();
@@ -71,7 +71,7 @@ namespace Backend.Controllers
                 List<Users> users = _db.Users.ToList();
                 List<Users> usersToSend = new List<Users>();
 
-                foreach(Users user in users)
+                foreach (Users user in users)
                 {
                     Systems systemClose = _db.Systems.Where(c => c.Id == user.SystemId).First();
 

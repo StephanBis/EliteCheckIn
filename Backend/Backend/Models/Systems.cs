@@ -12,7 +12,6 @@ namespace Backend
     {
         [Key]
         public int Id { get; set; }
-        public int SystemId { get; set; }
         public string Name { get; set; }
         public string Faction { get; set; }
         public decimal X { get; set; }
