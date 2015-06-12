@@ -100,6 +100,25 @@ namespace Desktop
                     Systems newSystem = new Systems();
                     newSystem.Id = system.id;
                     newSystem.Name = system.name;
+                    newSystem.Allegiance = system.allegiance;
+                    newSystem.Government = system.government;
+                    newSystem.Needs_permit = system.needs_permit;
+
+                    if (system.population == null)
+                    {
+                        newSystem.Population = "Unknown";
+                    }
+                    else
+                    {
+                        newSystem.Population = system.population;
+                    }
+
+                    newSystem.Primary_economy = system.primary_economy;
+                    newSystem.Security = system.security;
+                    newSystem.State = system.state;
+                    newSystem.X = system.x;
+                    newSystem.Y = system.y;
+                    newSystem.Z = system.z;
 
                     if (system.faction == null || system.faction == "")
                     {
