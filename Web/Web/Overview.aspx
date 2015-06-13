@@ -18,14 +18,17 @@
                         <div>
                             <header>
 								<h3>
-                                    Commanders that are close to your location:
+                                    Commanders that are in range
                                     <br />
                                     <asp:Label ID="lightyearLabel" runat="server" Text="LY radius:"></asp:Label>
                                     &nbsp;<asp:Label ID="lightyearValueLabel" runat="server" Text="10"></asp:Label>
-                                    <asp:TextBox ID="lightyearSliderTextbox" runat="server" AutoPostBack="True"></asp:TextBox>
+                                    <asp:TextBox ID="lightyearSliderTextbox" runat="server"></asp:TextBox>
                                     <cc1:SliderExtender ID="lightyearSlider" runat="server" TargetControlID="lightyearSliderTextbox" Minimum="1" TooltipText="Drag to change lightyear value" BoundControlID="lightyearValueLabel" RaiseChangeOnlyOnMouseUp="False" RailCssClass="ajax__slider_h_rail centered" />
                                     <br />
-                                    <asp:ListBox ID="commandersListbox" runat="server"></asp:ListBox>
+                                    <asp:Button ID="searchButton" runat="server" Text="Search" OnClick="searchButton_Click" />
+                                    <br />
+                                    <br />
+                                    <asp:Panel ID="commanderPanel" runat="server"></asp:Panel>
 
                                     <asp:Panel ID="errorPanel" runat="server" Visible="False">
                                         <asp:Label ID="errorLabel" runat="server" ForeColor="Red"></asp:Label>

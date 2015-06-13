@@ -54,10 +54,6 @@
                                         <br />
                                         <asp:Label ID="usernameLabel" runat="server" Text=""></asp:Label>
                                         <br />
-                                        <strong>E-mail</strong>
-                                        <br />
-                                        <asp:Label ID="emailLabel" runat="server" Text=""></asp:Label>
-                                        <br />
                                         <strong>Last known location</strong>
                                         <br />
                                         <asp:Label ID="systemLabel" runat="server" Text=""></asp:Label>

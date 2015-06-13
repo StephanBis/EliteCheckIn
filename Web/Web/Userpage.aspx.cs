@@ -22,7 +22,7 @@ namespace Web
                         Users user = (Users)Session["loggedIn"];
                         string username = Request.QueryString["Username"];
 
-                        if (username == user.Username)
+                        if (username.ToLower() == user.Username.ToLower())
                         {
                             usernameEditLabel.Text = "CMDR " + user.Username;
                             passwordTextbox.Text = user.Password;
@@ -31,7 +31,7 @@ namespace Web
                             rankImage.ToolTip = "Rank: " + user.Rank();
 
                             Systems system = await Database.GetSystemById(user.SystemId);
-                            if (!(user.SystemId == -1))
+                            if (!(user.SystemId <= 0))
                             {
                                 systemEditLabel.Text = system.Name;
                             }
@@ -50,12 +50,11 @@ namespace Web
                             if (queryUser != null)
                             {
                                 usernameLabel.Text = "CMDR " + queryUser.Username;
-                                emailLabel.Text = queryUser.Email;
                                 rankImage.ImageUrl = "~/assets/ranks/" + queryUser.Rank() + ".jpg";
-                                rankImage.ToolTip = "Rank: " + user.Rank();
+                                rankImage.ToolTip = "Rank: " + queryUser.Rank();
 
                                 Systems system = await Database.GetSystemById(queryUser.SystemId);
-                                if (!(queryUser.SystemId == -1))
+                                if (!(queryUser.SystemId <= 0))
                                 {
                                     systemLabel.Text = system.Name;
                                 }

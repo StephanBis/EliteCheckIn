@@ -34,7 +34,7 @@ namespace Web
                 }
                 else
                 {
-                    Session["loggedIn"] = user.Username;
+                    Session["loggedIn"] = user;
 
                     Server.Transfer("Home.aspx");
                 }

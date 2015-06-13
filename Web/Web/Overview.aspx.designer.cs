@@ -58,13 +58,22 @@ namespace Web {
         protected global::AjaxControlToolkit.SliderExtender lightyearSlider;
         
         /// <summary>
-        /// commandersListbox control.
+        /// searchButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox commandersListbox;
+        protected global::System.Web.UI.WebControls.Button searchButton;
+        
+        /// <summary>
+        /// commanderPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel commanderPanel;
         
         /// <summary>
         /// errorPanel control.
