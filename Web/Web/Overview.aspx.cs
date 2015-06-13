@@ -19,6 +19,8 @@ namespace Web
             }
             else
             {
+                lightyearValueLabel.Text = lightyearSlider.Value.ToString();
+
                 GetData();
             }            
         }
@@ -34,58 +36,41 @@ namespace Web
         {
             try
             {
+                int value = (int)lightyearSlider.Value;
+
                 Users currentUser = (Users)Session["loggedIn"];
 
-                List<Users> users = await Database.GetUsersCloseToSystem(currentUser.SystemId, Convert.ToInt32(lightyearValueLabel.Text));
+                List<Users> users = await Database.GetUsersCloseToSystem(currentUser.SystemId, value);
 
-                if (users != null)
+                ContentPlaceHolder myContent = (ContentPlaceHolder)this.Master.FindControl("MainContent");
+                Control c = myContent.FindControl("commandersDiv");
+                c.Controls.Clear();
+
+                if (users != null && users.Count != 1)
                 {
-                    commanderPanel.Controls.Clear();
-
                     foreach (Users user in users)
                     {
                         if (user.Username != currentUser.Username)
                         {
                             Systems system = await Database.GetSystemById(user.SystemId);
 
-                            System.Web.UI.WebControls.Image rankImage = new System.Web.UI.WebControls.Image();
-                            HyperLink nameLink = new HyperLink();
-                            Label systemLabel = new Label();
-                            Panel itemsPanel = new Panel();
+                            LiteralControl literal = new LiteralControl("<div class='4u 12u(narrower)'><section> <img src='assets/ranks/" + user.Rank() + ".jpg' /> <div><header><h3> <a href='Userpage.aspx?Username=" + user.Username + "'>CMDR " + user.Username + "</a> </h3></header><p>Last known location: " + system.Name + "</p></div></section></div>");
 
-                            rankImage.ImageUrl = "~/assets/ranks/" + user.Rank() + ".jpg";
-                            nameLink.Text = "CMDR " + user.Username;
-                            nameLink.NavigateUrl = "Userpage.aspx?Username=" + user.Username;
-                            systemLabel.Text = "Last known location: " + system.Name;
-
-                            itemsPanel.Controls.Add(rankImage);
-                            itemsPanel.Controls.Add(new LiteralControl("<br />"));
-                            itemsPanel.Controls.Add(nameLink);
-                            itemsPanel.Controls.Add(new LiteralControl("<br />"));
-                            itemsPanel.Controls.Add(systemLabel);
-
-                            commanderPanel.Controls.Add(itemsPanel);
+                            c.Controls.Add(literal);
                         }
                     }
                 }
                 else
                 {
-                    Label infoLabel = new Label();
+                    LiteralControl literal = new LiteralControl("<div class='12u 2u(narrower)'><section><div><header><h3>There are no commanders in the specified range!</h3></header></div></section></div>");
 
-                    infoLabel.Text = "There are no commanders near you!";
-
-                    commanderPanel.Controls.Add(infoLabel);
+                    c.Controls.Add(literal);
                 }
             }
             catch
             {
                 ShowError("There was an error getting the data!", Color.Red);
             }
-        }
-
-        protected void searchButton_Click(object sender, EventArgs e)
-        {
-            GetData();
         }
     }
 }

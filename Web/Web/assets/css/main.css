@@ -50,6 +50,12 @@
 		vertical-align: baseline;
 	}
 
+    table, th, td {
+        border: 1px solid #7c8081;
+        border-collapse: collapse;
+        vertical-align: top;
+    }
+
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 		display: block;
 	}
@@ -1748,7 +1754,6 @@
 
 .centered {
     margin: 0 auto;
-    width: 40% !important;
 }
 
 	input[type="text"],
@@ -1763,7 +1768,6 @@
 		-moz-appearance: none;
 		-webkit-appearance: none;
 		-ms-appearance: none;
-		appearance: none;
 		background: none;
 		border: solid 1px rgba(124, 128, 129, 0.2);
 		color: inherit;
@@ -2074,7 +2078,6 @@
 		-moz-appearance: none;
 		-webkit-appearance: none;
 		-ms-appearance: none;
-		appearance: none;
 		-moz-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 		-webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 		-ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;

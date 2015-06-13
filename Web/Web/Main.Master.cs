@@ -22,6 +22,7 @@ namespace Web
                     Users user = (Users)Session["loggedIn"];
                     usernameLabel.Text = "Welcome back, CMDR " + user.Username + "!";
                     userLink.NavigateUrl = "Userpage.aspx?Username=" + user.Username;
+                    searchTextbox.Style["margin-right"] = "0";
                     loggedInPanel.Visible = true;
                     loggedOutPanel.Visible = false;
                 }
@@ -31,6 +32,12 @@ namespace Web
                     loggedInPanel.Visible = false;
                 }
             }
+        }
+
+        protected void searchTextbox_TextChanged(object sender, EventArgs e)
+        {
+            Response.Redirect("Userpage.aspx?Username=" + searchTextbox.Text);
+            //Server.Transfer("Userpage.aspx?Username=" + searchTextbox.Text);
         }
     }
 }

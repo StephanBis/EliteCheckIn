@@ -93,6 +93,16 @@
                                     <td><strong>Changes</strong></td>
                                 </tr>
                                 <tr>
+                                    <td>Beta 1.2</td>
+                                    <td>
+                                        + Commander search function
+                                        <br />
+                                        ~ Overview page overhaul
+                                        <br />
+                                        ~ Bugfixes
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>Beta 1.1</td>
                                     <td>
                                         + Overview page

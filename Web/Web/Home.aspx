@@ -21,16 +21,17 @@
 		<section class="wrapper style1 container special">
 			<div class="row">
 				<div class="4u 12u(narrower)">
+
 					<section>
-						<span class="icon featured fa fa-user-plus"></span>
+						    <span class="icon featured fa fa-user-plus"></span>
                             <div>
                                 <header>
-									<h3>Register!</h3>
+									<h3><a href="Register.aspx">Register!</a></h3>
 								</header>
 								<p>Create an account to get access!</p>
                             </div>
 					</section>
-
+                            
 				</div>
 				<div class="4u 12u(narrower)">
 
@@ -38,7 +39,7 @@
 						<span class="icon featured fa fa-plus"></span>
                             <div>
                                 <header>
-									<h3>Rank up!</h3>
+									<h3><a href="Info.aspx">Rank up!</a></h3>
 								</header>
 								<p>Adding and verifying systems/stations will grant you more features!</p>
                             </div>
@@ -51,7 +52,7 @@
 						<span class="icon featured fa fa-thumbs-up"></span>
                             <div>
                                 <header>
-									<h3>Find other commanders!</h3>
+									<h3><a href="CheckIn.aspx">Find other commanders!</a></h3>
 								</header>
 								<p>Use the tool to find other commanders and have fun together!</p>
                             </div>

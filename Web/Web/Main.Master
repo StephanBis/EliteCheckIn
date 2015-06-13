@@ -12,38 +12,20 @@
 	</head>
 	<body class="index">
 		<div id="page-wrapper">
-
+            <form runat="server" id="form1">
 			<!-- Header -->
 				<header id="header" class="alt">
-					<h1 id="logo"><a href="Home.aspx">Elite: Dangerous Check-In <span>by CptnDutch and SilverLlama</span></a><br /><strong><a href="Info.aspx">BETA 1.1 (click for info)</a></strong></h1>
+					<h1 id="logo"><a href="Home.aspx">Elite: Dangerous Check-In <span>by CptnDutch and SilverLlama</span></a><br /><strong><a href="Info.aspx">BETA 1.2 (click for info)</a></strong></h1>
 					<nav id="nav">
 						<ul>
-							<%--<li class="submenu">
-								<a href="#">Layouts</a>
-								<ul>
-									<li><a href="left-sidebar.html">Left Sidebar</a></li>
-									<li><a href="right-sidebar.html">Right Sidebar</a></li>
-									<li><a href="no-sidebar.html">No Sidebar</a></li>
-									<li><a href="contact.html">Contact</a></li>
-									<li class="submenu">
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Dolore Sed</a></li>
-											<li><a href="#">Consequat</a></li>
-											<li><a href="#">Lorem Magna</a></li>
-											<li><a href="#">Sed Magna</a></li>
-											<li><a href="#">Ipsum Nisl</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>--%>
                             <asp:Label ID="testLabel" runat="server" Text=""></asp:Label>
                             <asp:Panel ID="loggedInPanel" runat="server" Visible="False">
+                                <asp:TextBox ID="searchTextbox" runat="server" Height="20px" Width="30%" placeholder="Search for commander..." OnTextChanged="searchTextbox_TextChanged"></asp:TextBox>
                                 <li><a href="Home.aspx" class="current">Home</a></li>
                                 <li><a href="CheckIn.aspx" class="current">Check-in</a></li>
                                 <li><a href="Overview.aspx" class="current">Overview</a></li>
                                 <li><a href="Logout.aspx" class="current">Log out</a></li>
-                                <asp:HyperLink ID="userLink" runat="server"><asp:Label ID="usernameLabel" runat="server" Text=""></asp:Label></asp:HyperLink>
+                                <li><asp:HyperLink ID="userLink" runat="server"><asp:Label ID="usernameLabel" runat="server" Text=""></asp:Label></asp:HyperLink></li>
                             </asp:Panel>
 
                             <asp:Panel ID="loggedOutPanel" runat="server" Visible="False">
@@ -74,11 +56,11 @@
 
 				</section>
 
-                <form runat="server" id="form1">
+                
                     <asp:ContentPlaceHolder ID="MainContent" runat="server">
                         
                     </asp:ContentPlaceHolder>
-                </form>
+                
 
 			
 
@@ -98,7 +80,7 @@
 					</ul>
 
 				</footer>
-
+            </form>
 		</div>
 
 		<!-- Scripts -->
