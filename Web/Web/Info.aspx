@@ -31,13 +31,13 @@
                                     <td>50</td>
                                     <td><asp:Image ID="Image1" runat="server" ImageUrl="~/assets/ranks/Harmless.jpg" Width="50px" /></td>
                                     <td>Harmless</td>
-                                    <td>Check-in and overview</td>
+                                    <td>Check-in and overview page</td>
                                 </tr>
                                 <tr>
                                     <td>100</td>
                                     <td><asp:Image ID="Image9" runat="server" ImageUrl="~/assets/ranks/Mostly harmless.jpg" Width="50px" /></td>
                                     <td>Mostly harmless</td>
-                                    <td>N/A</td>
+                                    <td>Systems details page</td>
                                 </tr>
                                 <tr>
                                     <td>150</td>
@@ -91,6 +91,14 @@
                                 <tr>
                                     <td><strong>Update</strong></td>
                                     <td><strong>Changes</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Beta 1.3</td>
+                                    <td>
+                                        ~ Hashed passwords
+                                        <br />
+                                        ~ Bugfixes
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Beta 1.2</td>

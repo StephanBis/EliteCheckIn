@@ -13,6 +13,8 @@ namespace Web
     {
         protected async void Page_Load(object sender, EventArgs e)
         {
+            Session["page"] = "CheckIn.aspx";
+
             if (!IsPostBack)
             {
                 if (Session["loggedIn"] != null)
@@ -25,7 +27,6 @@ namespace Web
                         if (username.ToLower() == user.Username.ToLower())
                         {
                             usernameEditLabel.Text = "CMDR " + user.Username;
-                            passwordTextbox.Text = user.Password;
                             emailTextbox.Text = user.Email;
                             rankImage.ImageUrl = "~/assets/ranks/" + user.Rank() + ".jpg";
                             rankImage.ToolTip = "Rank: " + user.Rank();
@@ -87,10 +88,9 @@ namespace Web
         {
             try
             {
-                Users user = new Users();
+                Users user = (Users)Session["loggedIn"];
 
-                user.Username = usernameEditLabel.Text;
-                user.Password = passwordTextbox.Text;
+                user.Hash = Hash.ComputeHash(passwordTextbox.Text, "MD5", null);
                 user.Email = emailTextbox.Text;
 
                 HttpResponseMessage response = await Database.SaveUser(user);

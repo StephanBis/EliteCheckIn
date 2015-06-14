@@ -154,6 +154,7 @@
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="Systems.aspx" />
     <Content Include="Userpage.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -172,6 +173,7 @@
       <DependentUpon>CheckIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="Classes\Database.cs" />
+    <Compile Include="Classes\Hash.cs" />
     <Compile Include="Classes\Systems.cs" />
     <Compile Include="Classes\Users.cs" />
     <Compile Include="Home.aspx.cs">
@@ -223,6 +225,13 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Systems.aspx.cs">
+      <DependentUpon>Systems.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Systems.aspx.designer.cs">
+      <DependentUpon>Systems.aspx</DependentUpon>
     </Compile>
     <Compile Include="Userpage.aspx.cs">
       <DependentUpon>Userpage.aspx</DependentUpon>

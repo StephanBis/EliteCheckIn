@@ -120,8 +120,9 @@ namespace Backend.Controllers
                 Users newUser = value.ToObject<Users>();
                 Users oldUser = GetUserByUsername(newUser.Username);
                 oldUser.Email = newUser.Email;
-                oldUser.Password = newUser.Password;
+                oldUser.Hash = newUser.Hash;
                 oldUser.SystemId = newUser.SystemId;
+                oldUser.Score = newUser.Score;
                 _db.SaveChanges();
                 return Request.CreateResponse(HttpStatusCode.OK);
             }

@@ -15,8 +15,11 @@ namespace Web
     {
         protected async void Page_Load(object sender, EventArgs e)
         {
+            Session["page"] = "CheckIn.aspx";
+
             if (Session["loggedIn"] == null)
             {
+                Session["error"] = "You must be logged in to access this page!";
                 Server.Execute("Login.aspx");
             }
             else
@@ -30,7 +33,7 @@ namespace Web
                         Users user = (Users)Session["loggedIn"];
                         Systems system = await Database.GetSystemById(user.SystemId);
 
-                        if (!(user.SystemId == -1))
+                        if (!(user.SystemId <= 0))
                         {
                             systemTextbox.Text = system.Name;
                         }

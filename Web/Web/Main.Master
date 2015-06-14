@@ -15,7 +15,7 @@
             <form runat="server" id="form1">
 			<!-- Header -->
 				<header id="header" class="alt">
-					<h1 id="logo"><a href="Home.aspx">Elite: Dangerous Check-In <span>by CptnDutch and SilverLlama</span></a><br /><strong><a href="Info.aspx">BETA 1.2 (click for info)</a></strong></h1>
+					<h1 id="logo"><a href="Home.aspx">Elite: Dangerous Check-In <span>by CptnDutch and SilverLlama</span></a><br /><strong><a href="Info.aspx">BETA 1.3 (click for info)</a></strong></h1>
 					<nav id="nav">
 						<ul>
                             <asp:Label ID="testLabel" runat="server" Text=""></asp:Label>

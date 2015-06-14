@@ -23,8 +23,9 @@ namespace Web
             {
                 Users user = new Users();
                 user.Username = usernameTextbox.Text;
-                user.Password = passwordTextbox.Text;
                 user.Email = emailTextbox.Text;
+
+                user.Hash = Hash.ComputeHash(passwordTextbox.Text, "MD5", null);
 
                 HttpResponseMessage response = await Database.AddUser(user);
 
@@ -39,7 +40,7 @@ namespace Web
                     Server.Transfer("Home.aspx");
                 }
             }
-            catch
+            catch 
             {
                 ShowError("There was an error getting the data!", Color.Red);
             }

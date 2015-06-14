@@ -14,6 +14,12 @@ namespace Web
         protected void Page_Load(object sender, EventArgs e)
         {
             errorPanel.Visible = false;  
+
+            if (Session["error"] != null)
+            {
+                ShowError(Session["error"].ToString(), Color.Red);
+                Session["error"] = null;
+            }
         }
 
         protected async void loginButton_Click(object sender, EventArgs e)
@@ -24,11 +30,18 @@ namespace Web
 
                 if (user != null)
                 {
-                    if (user.Password == passwordTextbox.Text)
+                    if (Hash.VerifyHash(passwordTextbox.Text, "MD5", user.Hash) == true)
                     {
                         Session["loggedIn"] = user;
 
-                        Server.Transfer("Home.aspx");
+                        if (Session["page"] != null)
+                        {
+                            Server.Transfer(Session["page"].ToString());
+                        }
+                        else
+                        {
+                            Server.Transfer("Home.aspx");
+                        }
                     }
                     else
                     {
