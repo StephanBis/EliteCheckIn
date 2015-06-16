@@ -32,16 +32,24 @@ namespace Web
                             rankImage.ToolTip = "Rank: " + user.Rank();
 
                             Systems system = await Database.GetSystemById(user.SystemId);
-                            if (!(user.SystemId <= 0))
+                            if (system != null)
                             {
-                                systemEditLabel.Text = system.Name;
+                                if (!(user.SystemId <= 0))
+                                {
+                                    systemEditLabel.Text = system.Name;
+                                }
+                                else
+                                {
+                                    systemEditLabel.Text = "Unknown";
+                                }
+
+                                systemLink.NavigateUrl = "Systems.aspx?System=" + system.Name;
                             }
                             else
                             {
-                                systemEditLabel.Text = "Unknown";
+                                ShowError("Could not get system data!", Color.Red);
                             }
-
-                            systemLink.NavigateUrl = "CheckIn.aspx";
+                            
                             editPanel.Visible = true;
                         }
                         else

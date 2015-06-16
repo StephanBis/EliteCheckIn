@@ -55,34 +55,20 @@ namespace Web
             try
             {
                 Users user = (Users)Session["loggedIn"];
-                List<Systems> systems = await Database.GetSystemsByFilter(systemTextbox.Text.Replace(".", "|"));
-                bool found = false;
+                Systems system = await Database.GetSystemByName(systemTextbox.Text.ToLower().Replace(".", "|"));
 
-                if (systems.Count > 0)
+                if (system != null)
                 {
-                    foreach(Systems system in systems)
+                    user.SystemId = Convert.ToInt32(system.Id);
+
+                    HttpResponseMessage response = await Database.SaveUser(user);
+
+                    if (!response.IsSuccessStatusCode)
                     {
-                        if (system.Name == systemTextbox.Text)
-                        {
-                            user.SystemId = Convert.ToInt32(system.Id);
-
-                            HttpResponseMessage response = await Database.SaveUser(user);
-
-                            if (!response.IsSuccessStatusCode)
-                            {
-                                ShowError("Unable to check-in!", Color.Red);
-                            }
-
-                            found = true;
-                            ShowError("Your location has been updated!", Color.Green);
-                            break;
-                        }
+                        ShowError("Unable to check-in!", Color.Red);
                     }
 
-                    if (found == false)
-                    {
-                        ShowError("This system does not exist!", Color.Red);
-                    }
+                    ShowError("Your location has been updated!", Color.Green);
                 }
                 else
                 {

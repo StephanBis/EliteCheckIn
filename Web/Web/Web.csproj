@@ -112,6 +112,8 @@
     <Content Include="assets\sass\main.scss" />
     <Content Include="Overview.aspx" />
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\EliteCheckIn - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\EliteCheckIn - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\FTP.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

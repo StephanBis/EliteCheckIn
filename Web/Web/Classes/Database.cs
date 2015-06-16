@@ -17,7 +17,7 @@ namespace Web
                 {
                     List<Users> users = new List<Users>();
 
-                    client.BaseAddress = new Uri("http://elitebackend-001-site1.myasp.net/");
+                    client.BaseAddress = new Uri("http://elitebackend.azurewebsites.net/");
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -46,7 +46,7 @@ namespace Web
                 {
                     Users user = new Users();
 
-                    client.BaseAddress = new Uri("http://elitebackend-001-site1.myasp.net/");
+                    client.BaseAddress = new Uri("http://elitebackend.azurewebsites.net/");
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -73,7 +73,7 @@ namespace Web
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("http://elitebackend-001-site1.myasp.net/");
+                    client.BaseAddress = new Uri("http://elitebackend.azurewebsites.net/");
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -93,7 +93,7 @@ namespace Web
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("http://elitebackend-001-site1.myasp.net/");
+                    client.BaseAddress = new Uri("http://elitebackend.azurewebsites.net/");
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                     HttpResponseMessage response = await client.PutAsJsonAsync("api/users/put/", user);
@@ -110,7 +110,7 @@ namespace Web
                 {
                     List<Systems> systems = new List<Systems>();
 
-                    client.BaseAddress = new Uri("http://elitebackend-001-site1.myasp.net/");
+                    client.BaseAddress = new Uri("http://elitebackend.azurewebsites.net/");
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -139,7 +139,7 @@ namespace Web
                 {
                     List<Systems> systems = new List<Systems>();
 
-                    client.BaseAddress = new Uri("http://elitebackend-001-site1.myasp.net/");
+                    client.BaseAddress = new Uri("http://elitebackend.azurewebsites.net/");
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -162,13 +162,42 @@ namespace Web
                 }
             }
 
+            public static async Task<Systems> GetSystemByName(string name)
+            {
+                using (var client = new HttpClient())
+                {
+                    Systems systems = new Systems();
+
+                    client.BaseAddress = new Uri("http://elitebackend.azurewebsites.net/");
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                    //voorzie strings en urls in configfile
+                    //voorzie methode voor post en get in utilityclass
+                    string url = "api/systems/name/" + name;
+
+                    HttpResponseMessage response = await client.GetAsync(url).ConfigureAwait(false);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        systems = await response.Content.ReadAsAsync<Systems>();
+
+                        return systems;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+
             public static async Task<Systems> GetSystemById(int systemId)
             {
                 using (var client = new HttpClient())
                 {
                     Systems system = new Systems();
 
-                    client.BaseAddress = new Uri("http://elitebackend-001-site1.myasp.net/");
+                    client.BaseAddress = new Uri("http://elitebackend.azurewebsites.net/");
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 

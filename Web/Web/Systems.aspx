@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="Systems.aspx.cs" Inherits="Web.Systems1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="Systems.aspx.cs" Inherits="Web.Systems1" Async="true" MaintainScrollPositionOnPostback="true" %>
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <article id="main">
@@ -28,35 +28,38 @@
                                         <br />
                                         <asp:Button ID="getButton" runat="server" Text="Get details" OnClick="getButton_Click" />
                                         <br />
-                                        <strong><asp:Label ID="nameLabel" runat="server" Text=""></asp:Label></strong>
                                         <br />
-                                        <strong>Allegiance</strong>
-                                        <br />
-                                        <asp:Label ID="allegianceLabel" runat="server" Text=""></asp:Label>
-                                        <br />
-                                        <strong>Faction</strong>
-                                        <br />
-                                        <asp:Label ID="factionLabel" runat="server" Text=""></asp:Label>
-                                        <br />
-                                        <strong>Need for permit</strong>
-                                        <br />
-                                        <asp:Label ID="permitLabel" runat="server" Text=""></asp:Label>
-                                        <br />
-                                        <strong>Population</strong>
-                                        <br />
-                                        <asp:Label ID="populationLabel" runat="server" Text=""></asp:Label>
-                                        <br />
-                                        <strong>Primary economy</strong>
-                                        <br />
-                                        <asp:Label ID="economyLabel" runat="server" Text=""></asp:Label>
-                                        <br />
-                                        <strong>Security</strong>
-                                        <br />
-                                        <asp:Label ID="securityLabel" runat="server" Text=""></asp:Label>
-                                        <br />
-                                        <strong>State</strong>
-                                        <br />
-                                        <asp:Label ID="stateLabel" runat="server" Text=""></asp:Label>
+                                        <asp:Panel ID="labelPanel" runat="server">
+                                            <strong><asp:Label ID="nameLabel" runat="server" Text=""></asp:Label></strong>
+                                            <br />
+                                            <strong>Allegiance</strong>
+                                            <br />
+                                            <asp:Label ID="allegianceLabel" runat="server" Text=""></asp:Label>
+                                            <br />
+                                            <strong>Faction</strong>
+                                            <br />
+                                            <asp:Label ID="factionLabel" runat="server" Text=""></asp:Label>
+                                            <br />
+                                            <strong>Permitted needed</strong>
+                                            <br />
+                                            <asp:Label ID="permitLabel" runat="server" Text=""></asp:Label>
+                                            <br />
+                                            <strong>Population</strong>
+                                            <br />
+                                            <asp:Label ID="populationLabel" runat="server" Text=""></asp:Label>
+                                            <br />
+                                            <strong>Primary economy</strong>
+                                            <br />
+                                            <asp:Label ID="economyLabel" runat="server" Text=""></asp:Label>
+                                            <br />
+                                            <strong>Security</strong>
+                                            <br />
+                                            <asp:Label ID="securityLabel" runat="server" Text=""></asp:Label>
+                                            <br />
+                                            <strong>State</strong>
+                                            <br />
+                                            <asp:Label ID="stateLabel" runat="server" Text=""></asp:Label>
+                                        </asp:Panel>
                                     </asp:Panel>
                                     
                                     <asp:Panel ID="errorPanel" runat="server" Visible="False">

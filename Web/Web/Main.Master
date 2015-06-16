@@ -18,9 +18,8 @@
 					<h1 id="logo"><a href="Home.aspx">Elite: Dangerous Check-In <span>by CptnDutch and SilverLlama</span></a><br /><strong><a href="Info.aspx">BETA 1.3 (click for info)</a></strong></h1>
 					<nav id="nav">
 						<ul>
-                            <asp:Label ID="testLabel" runat="server" Text=""></asp:Label>
                             <asp:Panel ID="loggedInPanel" runat="server" Visible="False">
-                                <asp:TextBox ID="searchTextbox" runat="server" Height="20px" Width="30%" placeholder="Search for commander..." OnTextChanged="searchTextbox_TextChanged"></asp:TextBox>
+                                <asp:TextBox ID="searchTextbox" runat="server" Height="20px" Width="30%" placeholder="Search..." OnTextChanged="searchTextbox_TextChanged" ToolTip="Type CMDR before you type the username, without it you're searching for systems">CMDR </asp:TextBox>
                                 <li><a href="Home.aspx" class="current">Home</a></li>
                                 <li><a href="CheckIn.aspx" class="current">Check-in</a></li>
                                 <li><a href="Overview.aspx" class="current">Overview</a></li>

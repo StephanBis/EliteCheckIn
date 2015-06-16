@@ -36,8 +36,14 @@ namespace Web
 
         protected void searchTextbox_TextChanged(object sender, EventArgs e)
         {
-            Response.Redirect("Userpage.aspx?Username=" + searchTextbox.Text);
-            //Server.Transfer("Userpage.aspx?Username=" + searchTextbox.Text);
+            //if (searchTextbox.Text.ToLower().StartsWith("cmdr"))
+            //{
+            //    Response.Redirect("Userpage.aspx?Username=" + searchTextbox.Text);
+            //}
+            //else
+            //{
+            //    Response.Redirect("Systems.aspx?System=" + searchTextbox.Text);
+            //}
         }
     }
 }

@@ -56,7 +56,7 @@ namespace Web
                         {
                             Systems system = await Database.GetSystemById(user.SystemId);
 
-                            LiteralControl literal = new LiteralControl("<div class='4u 12u(narrower)'><section> <img src='assets/ranks/" + user.Rank() + ".jpg' /> <div><header><h3> <a href='Userpage.aspx?Username=" + user.Username + "'>CMDR " + user.Username + "</a> </h3></header><p>Last known location: " + system.Name + "</p></div></section></div>");
+                            LiteralControl literal = new LiteralControl("<div class='4u 12u(narrower)'><section> <img src='assets/ranks/" + user.Rank() + ".jpg' /> <div><header><h3> <a href='Userpage.aspx?Username=" + user.Username + "'>CMDR " + user.Username + "</a> </h3></header><p>Last known location: <a href='Systems.aspx?System=" + system.Name + "'>" + system.Name + "</a></p></div></section></div>");
 
                             c.Controls.Add(literal);
                         }

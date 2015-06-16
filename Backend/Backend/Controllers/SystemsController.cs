@@ -34,6 +34,12 @@ namespace Backend.Controllers
             return GetSystemsByFilter(name.Replace("|", "."));
         }
 
+        [Route("api/systems/name/{systemname}")]
+        public Systems GetByName(string systemname)
+        {
+            return GetSystemByName(systemname.Replace("|", "."));
+        }
+
         private Systems GetSystemById(int id)
         {
             try
@@ -51,6 +57,18 @@ namespace Backend.Controllers
             try
             {
                 return _db.Systems.Where(c => c.Name.Contains(name)).ToList();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        private Systems GetSystemByName(string name)
+        {
+            try
+            {
+                return _db.Systems.Where(c => c.Name == name).First();
             }
             catch (Exception ex)
             {

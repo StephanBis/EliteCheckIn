@@ -97,50 +97,53 @@ namespace Desktop
 
                 foreach (SystemsJson system in systems)
                 {
-                    Systems newSystem = new Systems();
-                    newSystem.Id = system.id;
-                    newSystem.Name = system.name;
-                    newSystem.Allegiance = system.allegiance;
-                    newSystem.Government = system.government;
-                    newSystem.Needs_permit = system.needs_permit;
-
-                    if (system.population == null)
+                    if (system.id >= 22803)
                     {
-                        newSystem.Population = "Unknown";
-                    }
-                    else
-                    {
-                        newSystem.Population = system.population;
-                    }
+                        Systems newSystem = new Systems();
+                        newSystem.Id = system.id;
+                        newSystem.Name = system.name;
+                        newSystem.Allegiance = system.allegiance;
+                        newSystem.Government = system.government;
+                        newSystem.Needs_permit = system.needs_permit;
 
-                    newSystem.Primary_economy = system.primary_economy;
-                    newSystem.Security = system.security;
-                    newSystem.State = system.state;
-                    newSystem.X = system.x;
-                    newSystem.Y = system.y;
-                    newSystem.Z = system.z;
+                        if (system.population == null)
+                        {
+                            newSystem.Population = "Unknown";
+                        }
+                        else
+                        {
+                            newSystem.Population = system.population;
+                        }
 
-                    if (system.faction == null || system.faction == "")
-                    {
-                        newSystem.Faction = "Unknown";
-                    }
-                    else
-                    {
-                        newSystem.Faction = system.faction;
-                    }
+                        newSystem.Primary_economy = system.primary_economy;
+                        newSystem.Security = system.security;
+                        newSystem.State = system.state;
+                        newSystem.X = system.x;
+                        newSystem.Y = system.y;
+                        newSystem.Z = system.z;
 
-                    HttpResponseMessage response = await Database.AddSystem(newSystem);
+                        if (system.faction == null || system.faction == "")
+                        {
+                            newSystem.Faction = "Unknown";
+                        }
+                        else
+                        {
+                            newSystem.Faction = system.faction;
+                        }
 
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show("Error");
-                        break;
-                    }
-                    else
-                    {
-                        index++;
+                        HttpResponseMessage response = await Database.AddSystem(newSystem);
 
-                        statusLabel.Text = newSystem.Id + " | " + newSystem.Name + " | " + newSystem.Faction + " | " + index; 
+                        if (!response.IsSuccessStatusCode)
+                        {
+                            MessageBox.Show("Error");
+                            break;
+                        }
+                        else
+                        {
+                            index++;
+
+                            statusLabel.Text = newSystem.Id + " | " + newSystem.Name + " | " + newSystem.Faction + " | " + index; 
+                        }
                     }
                 }
 

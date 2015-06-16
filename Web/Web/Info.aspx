@@ -37,7 +37,7 @@
                                     <td>100</td>
                                     <td><asp:Image ID="Image9" runat="server" ImageUrl="~/assets/ranks/Mostly harmless.jpg" Width="50px" /></td>
                                     <td>Mostly harmless</td>
-                                    <td>Systems details page</td>
+                                    <td>System details page</td>
                                 </tr>
                                 <tr>
                                     <td>150</td>
@@ -94,6 +94,16 @@
                                 </tr>
                                 <tr>
                                     <td>Beta 1.3</td>
+                                    <td>
+                                        + System details page (Mostly harmless rank)
+                                        <br />
+                                        ~ Uploaded website & backend to Azure
+                                        <br />
+                                        ~ Bugfixes
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Beta 1.2.1</td>
                                     <td>
                                         ~ Hashed passwords
                                         <br />
